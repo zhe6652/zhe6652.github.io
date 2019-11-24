@@ -11,7 +11,7 @@ tags:
     - ctf
 ---
 
-这个题经过 [@x](https://ma2in9.top) 的注释之后是这样的：
+这个题经过 [@x](https://ama2in9.top) 的注释之后是这样的：
 ![](https://github.com/zhe6652/zhe6652.github.io/raw/master/_posts/unctf-2019-so-easy-pwn/main.png)
 
 ### 寻找漏洞点
