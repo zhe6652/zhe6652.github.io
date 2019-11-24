@@ -12,7 +12,7 @@ tags:
 ---
 
 这个题经过 [@x](ma2in9.top) 的注释之后是这样的：
-![](main.png)
+![](https://github.com/zhe6652/zhe6652.github.io/raw/master/_posts/unctf-2019-so-easy-pwn/main.png)
 
 ### 寻找漏洞点
 思路是在两个read函数处下断点，这种写的操作最容易有漏洞，看到read了16个字节，所以拿16个A测试，关闭地址随机化之后，调试，用vmmap看加载的基地址，得到read的真实地址，初步代码如下：
