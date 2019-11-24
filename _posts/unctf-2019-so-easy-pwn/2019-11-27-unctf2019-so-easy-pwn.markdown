@@ -32,7 +32,7 @@ sh.send("A" * 16)
 sh.interactive()
 ```
 调试之后发现welcome中的s地址为``0xffffd16c``, call函数中的v1的地址为``0xffffd178``,buf地址为``0xffffd17c``,也就是说s和v1地址只差了12，我们输入16个字节后刚好可以覆盖v1的地址，这就是漏洞所在：
-![](vul.png)
+![](https://github.com/zhe6652/zhe6652.github.io/raw/master/_posts/unctf-2019-so-easy-pwn/vul.png)
 
 ### 利用
 查看call函数中函数恰巧return了v1，而v1又能被我们覆盖，所以利用方法不言而喻，用12个padding加上一个返回地址即可，查看程序中有back_door可以利用，但是程序开启了PIE。再看welcome函数中泄露了基地址的前16位，也就是前4个字节，back_door中
@@ -67,4 +67,4 @@ except Exception as e:
 ```
 
 这个题中有个好玩的地方就是第二次read，不管输入什么都会报错，调试得知原来read函数根本没read成功,read返回值(rax)为-1:
-![](read.png)
+![](https://github.com/zhe6652/zhe6652.github.io/raw/master/_posts/unctf-2019-so-easy-pwn/read.png)
