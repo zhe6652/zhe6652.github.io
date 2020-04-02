@@ -1,0 +1,67 @@
+---
+layout:     post
+title:      "python在遍历时删除元素"
+#subtitle:   " \"Hello World, Hello my first Blog\""
+date:       2020-4-2 12:29:00
+author:     "Red"
+#header-img: "img/post-bg-2015.jpg"
+catalog: true
+tags:
+    - python
+    - 删除元素
+---
+
+python萌新来水一篇博客
+### 问题产生
+​	最近干活儿的时候遇到一个有意思的问题，在用python遍历一个list删除一些不符合条件的元素的时候，怎么都删不干净，看了一下发现了问题，这个问题可以简化为：
+```python
+a = [1,2,3,4]
+>>> for i in a:
+...     if i <= 3:
+...         a.remove(i)
+...
+>>> a
+[2, 4]
+```
+所以，2为什么没被删掉？？？2不小于3？？？
+
+### 解决
+作为一个萌新，仔细想了想，删除1之后，2，3，4应该是向前移动了，但是第一个位置已经被遍历过了，所以遍历的下一个元素就是3，2就被“吃”掉了，显然不能这么遍历删除，参考了文末的链接之后发现基本是两个思路，第一，新建一个list，将我们想要的放进去：
+
+```python
+>>> def check(x):
+...     if x <= 3:
+...         return True
+...
+>>>
+>>> a = [1,2,3,4]
+>>> b = [x for x in a if not check(x)]
+>>> b
+[4]
+>>>
+```
+新建了一个b，遍历a，把符合条件的加入进来，虽然用list comps会加快速度，但是这个方法有一个问题，就是这个方法创建了一个新的list b，在有多个地方引用原来的list a的时候就会出现问题。第二个思路就解决了这个问题，建立一个原list的副本，然后根据副本信息对原list进行操作：
+```python
+>>> a = [1,2,3,4]
+>>> def check(x):
+...     if x <= 3:
+...         return True
+...
+>>>
+>>> a[:] = [x for x in a if not check(x)]
+>>> a
+[4]
+>>>
+>>> a = [1,2,3,4]
+>>> for i in a[:]:
+...     if i <= 3:
+...         a.remove(i)
+...
+>>> a
+[4]
+>>>
+```
+可以看到，a发生了改变，所以就不用怕多处引用的问题了，当然还有用itertools来进行遍历的，有兴趣可以看看。
+
+ > 参考链接 : https://stackoverflow.com/questions/1207406/how-to-remove-items-from-a-list-while-iterating 
+
