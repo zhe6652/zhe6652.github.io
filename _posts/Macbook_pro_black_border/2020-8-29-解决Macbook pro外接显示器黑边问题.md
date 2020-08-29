@@ -29,7 +29,6 @@ tags:
 
 
 
-参考:
 
 [1]:https://ishan.co/external-monitor-underscan
 [2]:https://github.com/xzhih/one-key-hidpi
