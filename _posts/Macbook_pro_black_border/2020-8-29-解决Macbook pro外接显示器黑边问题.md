@@ -24,12 +24,12 @@ tags:
 
 ## 开启HiDPI
 
-更新了Catalina之后原来做过的设置也算白做了，准备开启HiDIPI，之前是手动设置的，后来发现一个[脚本]，可以一键干这事儿，试了试也行了。
+更新了Catalina之后原来做过的设置也算白做了，准备开启HiDIPI，之前是手动设置的，后来发现一个[脚本][2]，可以一键干这事儿，试了试也行了。
 ![](https://github.com/zhe6652/zhe6652.github.io/raw/master/_posts/Macbook_pro_black_border/1.png)
 
 
 
-
+参考:
 
 [1]:https://ishan.co/external-monitor-underscan
 [2]:https://github.com/xzhih/one-key-hidpi
